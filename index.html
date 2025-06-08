@@ -21,7 +21,7 @@
         </div>
     </header>
 <main class="min-h-screen  bg-[url('images/background.jpg')] bg-cover bg-center bg-no-repeat bg-blend-overlay flex flex-col items-center p-4">
-    <div class="w-full max-w-[500px] p-5 mt-5 space-y-4 backdrop-blur-sm bg-white/5 rounded-xl">
+    <div class="w-[80%] p-5 mt-5 space-y-4 backdrop-blur-sm bg-white/5 rounded-xl">
         <div class="flex gap-2.5 bg-white rounded-lg p-2 shadow-lg border border-white/20 hover:shadow-xl transition-shadow">
             <input type="text" id="newTaskInput" placeholder="Add a new task..." aria-label="New task input" 
                 class="flex-1 px-4 py-3 border-none focus:outline-none text-[#333333] rounded-lg placeholder:text-gray-400">
@@ -34,9 +34,11 @@
         <div id="message-box" class="hidden bg-[#d4edda]/90 backdrop-blur-sm text-[#155724] p-3 rounded-lg text-center text-sm border border-[#c3e6cb] shadow-lg opacity-0 -translate-y-2.5 transition-all duration-300"></div>
         
         <div class="flex justify-center gap-2 flex-wrap">
-            <button id="filterAllBtn" class="bg-white/90 backdrop-blur-sm text-[#333333] border border-white/20 rounded-lg px-6 py-2.5 shadow-lg hover:shadow-xl transition-all duration-200 font-medium hover:-translate-y-0.5 active:translate-y-0 focus:ring-2 focus:ring-[#7fd253] focus:ring-offset-2">Show All</button>
-            <button id="filterCompletedBtn" class="bg-white/90 backdrop-blur-sm text-[#333333] border border-white/20 rounded-lg px-6 py-2.5 shadow-lg hover:shadow-xl transition-all duration-200 font-medium hover:-translate-y-0.5 active:translate-y-0 focus:ring-2 focus:ring-[#7fd253] focus:ring-offset-2">Show Completed</button>
-            <button id="filterActiveBtn" class="bg-white/90 backdrop-blur-sm text-[#333333] border border-white/20 rounded-lg px-6 py-2.5 shadow-lg hover:shadow-xl transition-all duration-200 font-medium hover:-translate-y-0.5 active:translate-y-0 focus:ring-2 focus:ring-[#7fd253] focus:ring-offset-2">Show Unfinished</button>
+            <button id="filterActiveBtn" class="bg-white/90 backdrop-blur-sm text-[#333333] border border-white/20 rounded-lg px-6 py-2.5 shadow-lg hover:shadow-xl transition-all duration-200 font-medium hover:-translate-y-0.5 active:translate-y-0 focus:ring-2 focus:ring-[#7fd253] focus:ring-offset-2"> Unfinished Tasks</button>
+
+            <button id="filterCompletedBtn" class="bg-white/90 backdrop-blur-sm text-[#333333] border border-white/20 rounded-lg px-6 py-2.5 shadow-lg hover:shadow-xl transition-all duration-200 font-medium hover:-translate-y-0.5 active:translate-y-0 focus:ring-2 focus:ring-[#7fd253] focus:ring-offset-2"> Completed Tasks</button>
+            <button id="filterAllBtn" class="bg-white/90 backdrop-blur-sm text-[#333333] border border-white/20 rounded-lg px-6 py-2.5 shadow-lg hover:shadow-xl transition-all duration-200 font-medium hover:-translate-y-0.5 active:translate-y-0 focus:ring-2 focus:ring-[#7fd253] focus:ring-offset-2"> All Tasks</button>
+
         </div>
 
         <div class="flex justify-around py-3 border-b border-white/20 mb-2 text-sm text-white font-medium backdrop-blur-sm bg-white/10 rounded-lg">
@@ -52,16 +54,17 @@
         </button>
     </div>
 
-    <div id="confirmationModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 opacity-0 invisible transition-all duration-300">
-        <div class="bg-white/95 backdrop-blur-sm p-8 rounded-xl shadow-2xl max-w-[400px] w-[90%] -translate-y-5 transition-transform duration-300 text-center">
-            <h3 id="modalTitle" class="text-2xl font-bold mb-4 text-[#333333]">Confirm Action</h3>
-            <p id="modalMessage" class="mb-6 text-[#666666] leading-relaxed">Are you sure you want to perform this action?</p>
-            <div class="flex justify-center gap-4">
-                <button id="confirmBtn" class="bg-red-600 text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-red-700 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 transition-all duration-200 focus:ring-2 focus:ring-red-500 focus:ring-offset-2">Yes</button>
-                <button id="cancelBtn" class="bg-gray-100 text-[#333333] px-6 py-3 rounded-lg font-semibold border border-gray-200 shadow-lg hover:bg-gray-200 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 transition-all duration-200 focus:ring-2 focus:ring-gray-400 focus:ring-offset-2">No</button>
+    <div id="confirmationModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center transition-opacity duration-300 opacity-0 invisible z-50">
+        <div class="bg-white p-6 rounded-lg shadow-xl w-80 text-center transform transition-transform duration-300 modal-content -translate-y-5">
+            <h3 id="modalTitle" class="text-xl font-semibold mb-4 text-[#333333]">Confirm Action</h3>
+            <p id="modalMessage" class="mb-6 text-gray-700">Are you sure you want to perform this action?</p>
+            <div class="modal-actions">
+                <button id="confirmBtn" class="modal-btn confirm bg-red-600 text-white px-6 py-3 rounded-lg font-semibold shadow-lg hover:bg-red-700 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 transition-all duration-200 focus:ring-2 focus:ring-red-500 focus:ring-offset-2">Yes</button>
+                <button id="cancelBtn" class="modal-btn cancel bg-gray-100 text-[#333333] px-6 py-3 rounded-lg font-semibold border border-gray-200 shadow-lg hover:bg-gray-200 hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 transition-all duration-200 focus:ring-2 focus:ring-gray-400 focus:ring-offset-2">No</button>
             </div>
         </div>
     </div>
+   
 </main>
 <footer class="w-full bg-[#4f963a]/90 backdrop-blur-sm py-4 px-4 font-['Edu_NSW_ACT_Cursive']">
     <div class="flex items-center justify-center gap-6">
