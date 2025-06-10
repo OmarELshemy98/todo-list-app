@@ -134,7 +134,11 @@ function updateTaskStats() {
  * Also applies the current filter and updates task statistics.
  */
 function loadTasks() {
+    // Attempt to retrieve tasks from local storage.
+    // If 'todos' key exists, parse its JSON string value into the tasks array.
+    // If not, initialize tasks as an empty array.
     tasks = JSON.parse(localStorage.getItem('todos')) || [];
+    
     taskList.innerHTML = ''; // Clear existing tasks in the DOM
     tasks.forEach(task => addTaskToDOM(task, false)); // Pass full task object
     filterTasks(currentFilter); // Apply current filter after loading
@@ -145,6 +149,8 @@ function loadTasks() {
  * Saves the current tasks array to Local Storage.
  */
 function saveTasks() {
+    // Convert the 'tasks' array into a JSON string and store it in local storage
+    // under the key 'todos'.
     localStorage.setItem('todos', JSON.stringify(tasks));
     updateTaskStats(); // Update stats after saving
 }
@@ -263,7 +269,7 @@ function addTaskToDOM(taskObject, animate = false) {
                 durationSpan.textContent = '';
                 showMessage('Task marked active!', 'info');
             }
-            saveTasks();
+            saveTasks(); // <--- This function saves the updated tasks array to local storage
             filterTasks(currentFilter); // Re-apply filter to update visibility
         }
     });
@@ -278,7 +284,7 @@ function addTaskToDOM(taskObject, animate = false) {
             listItem.addEventListener('transitionend', () => {
                 listItem.remove();
                 tasks = tasks.filter(t => t.id !== taskIdToDelete); // Remove from global array
-                saveTasks();
+                saveTasks(); // <--- This function saves the updated tasks array to local storage
                 showMessage('Task deleted successfully!', 'success');
                 filterTasks(currentFilter); // Re-apply filter
             }, { once: true });
@@ -321,7 +327,7 @@ function addTaskToDOM(taskObject, animate = false) {
                 const taskIndex = tasks.findIndex(t => t.id === taskId);
                 if (taskIndex > -1) {
                     tasks[taskIndex].text = newText;
-                    saveTasks();
+                    saveTasks(); // <--- This function saves the updated tasks array to local storage
                 }
                 showMessage('Task updated successfully!', 'success');
             } else if (!newText) { // If new text is empty
@@ -413,7 +419,7 @@ addTaskBtn.addEventListener('click', () => {
         };
         tasks.push(newTaskObject); // Add to global tasks array
         addTaskToDOM(newTaskObject, true); // Pass object to DOM function with animation
-        saveTasks(); // Save changes to Local Storage
+        saveTasks(); // <--- This function saves the updated tasks array to local storage
         newTaskInput.value = ''; // Clear input field
         showMessage('Task added successfully!', 'success');
     } else {
@@ -450,7 +456,7 @@ clearCompletedBtn.addEventListener('click', () => {
         if (completedTaskElements.length === 0) { // Double check in case of filter
             // If no elements with line-through are found, just clear from data
             tasks = tasks.filter(t => !t.completed);
-            saveTasks();
+            saveTasks(); // <--- This function saves the updated tasks array to local storage
             showMessage('Completed tasks cleared!', 'success');
             filterTasks(currentFilter);
             return;
@@ -464,7 +470,7 @@ clearCompletedBtn.addEventListener('click', () => {
                 animationsCompleted++;
                 if (animationsCompleted === completedTaskElements.length) {
                     tasks = tasks.filter(t => !t.completed);
-                    saveTasks();
+                    saveTasks(); // <--- This function saves the updated tasks array to local storage
                     showMessage('Completed tasks cleared!', 'success');
                     filterTasks(currentFilter); // Re-apply filter to update view if needed
                 }
@@ -500,7 +506,7 @@ function updateDateTime() {
 
 // Initialize the application when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
-    loadTasks();
+    loadTasks(); // <--- This function loads tasks from local storage when the page starts
     updateDateTime();
     setInterval(updateDateTime, 1000); // Keep date/time updated
 });
