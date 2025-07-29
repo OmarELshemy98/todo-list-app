@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body class="selection:bg-green-200 font-['Inter']">
-    <header class="w-full bg-[#4f963a]/90 backdrop-blur-sm py-6 px-4 shadow-lg sticky top-0 z-20 border-b-2 border-white/10 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
+    <header class="w-full bg-[#132d42]/90 backdrop-blur-sm py-6 px-4 shadow-lg sticky top-0 z-20 border-b-2 border-white/10 flex flex-col sm:flex-row justify-between items-center text-center sm:text-left">
         <div class="flex items-center gap-3 hover:scale-105 transition-transform cursor-pointer mb-4 sm:mb-0">
             <svg class="w-[30px] h-[30px] animate-pulse" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="#ffffff" d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/></svg>
             <span class="text-white text-4xl font-extrabold tracking-wider drop-shadow-lg">TODO</span>
@@ -26,7 +26,7 @@
             <input type="text" id="newTaskInput" placeholder="Add a new task..." aria-label="New task input" 
                 class="flex-1 px-4 py-3 border-none focus:outline-none text-[#333333] rounded-lg placeholder:text-gray-400">
             <button id="addTaskBtn" 
-                class="bg-[#7fd253] text-white rounded-lg px-5 py-3 text-2xl font-bold leading-none shadow-lg hover:bg-[#4f963a] hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 active:shadow transition-all duration-200 focus:ring-2 focus:ring-[#7fd253] focus:ring-offset-2">
+                class="bg-[#19bcc2] text-white rounded-lg px-5 py-3 text-2xl font-bold leading-none shadow-lg hover:bg-[#4f963a] hover:-translate-y-0.5 hover:shadow-xl active:translate-y-0 active:shadow transition-all duration-200 focus:ring-2 focus:ring-[#7fd253] focus:ring-offset-2">
                 +
             </button>
         </div>
@@ -37,19 +37,19 @@
             <button id="filterActiveBtn" class="bg-white/90 backdrop-blur-sm text-[#333333] border border-white/20 rounded-lg px-6 py-2.5 shadow-lg hover:shadow-xl transition-all duration-200 font-medium hover:-translate-y-0.5 active:translate-y-0 focus:ring-2 focus:ring-[#7fd253] focus:ring-offset-2 text-sm sm:text-base"> Unfinished Tasks</button>
 
             <button id="filterCompletedBtn" class="bg-white/90 backdrop-blur-sm text-[#333333] border border-white/20 rounded-lg px-6 py-2.5 shadow-lg hover:shadow-xl transition-all duration-200 font-medium hover:-translate-y-0.5 active:translate-y-0 focus:ring-2 focus:ring-[#7fd253] focus:ring-offset-2 text-sm sm:text-base"> Completed Tasks</button>
-            <button id="filterAllBtn" class="bg-white/90 backdrop-blur-sm text-[#333333] border border-white/20 rounded-lg px-6 py-2.5 shadow-lg hover:shadow-xl transition-all duration-200 font-medium hover:-translate-y-0.5 active:translate-y-0 focus:ring-2 focus:ring-[#7fd253] focus:ring-offset-2 text-sm sm:text-base"> All Tasks</button>
+            <button id="filterAllBtn" class="bg-[#19bcc2]  text-[#333333] border  rounded-lg px-6 py-2.5 shadow-lg hover:shadow-xl transition-all duration-200 font-medium hover:-translate-y-0.5 active:translate-y-0 text-sm sm:text-base"> All Tasks</button>
 
         </div>
 
-        <div class="flex justify-around py-3 border-b border-white/20 mb-2 text-sm text-white font-medium backdrop-blur-sm bg-white/10 rounded-lg">
-            <div>Active: <span id="activeTasksCount" class="font-bold text-lg">0</span></div>
-            <div>Completed: <span id="completedTasksCount" class="font-bold text-lg">0</span></div>
+        <div class="flex justify-around py-3 bg-white border-b border-white/50 mb-2 text-sm text-white font-medium backdrop-blur-sm  rounded-lg">
+            <div class="text-[#1f4547]">Active: <span id="activeTasksCount" class="font-bold text-lg">0</span></div>
+            <div class="text-[#1f4547]">Completed: <span id="completedTasksCount" class="font-bold text-lg">0</span></div>
         </div>
 
         <ul id="taskList" class="space-y-3"></ul>
 
         <button id="clearCompletedBtn" 
-            class="w-full bg-white/90 backdrop-blur-sm text-[#333333] border border-white/20 rounded-lg py-3 px-6 shadow-lg hover:shadow-xl transition-all duration-200 font-medium hover:-translate-y-0.5 active:translate-y-0 mt-4 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 text-sm sm:text-base">
+            class="w-full bg-[#19bcc2] backdrop-blur-sm text-[#333333] border border-white/20 rounded-lg py-3 px-6 shadow-lg hover:shadow-xl transition-all duration-200 font-medium hover:-translate-y-0.5 active:translate-y-0 mt-4 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 text-sm sm:text-base">
             Clear Completed Tasks
         </button>
     </div>
@@ -66,7 +66,7 @@
     </div>
    
 </main>
-<footer class="w-full bg-[#4f963a]/90 backdrop-blur-sm py-4 px-4 font-['Edu_NSW_ACT_Cursive']">
+<footer class="w-full bg-[#132d42]/90 backdrop-blur-sm py-4 px-4 font-['Edu_NSW_ACT_Cursive']">
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6">
         <p class="text-white text-lg font-medium flex flex-col sm:flex-row items-center gap-2">
             Created by: 
